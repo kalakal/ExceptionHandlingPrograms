@@ -1,11 +1,17 @@
-try:
-    numerator = 10
-    denominator = 0
+class BalanceException(Exception):
+    pass
 
-    result = numerator / denominator
 
-    print(result)
-except:
-    print("Error: Denominator cannot be 0.")
+def checkbalance():
+    money = 10000
+    withdraw = int(input("Enter The Amount"))
+    try:
+        balance = money - withdraw
+        if(balance<=2000):
+            raise BalanceException("insufficient balance")
+        print(balance)
+    except BalanceException as be:
+        print(be)
 
-# Output: Error: Denominator cannot be 0.
+
+checkbalance()
